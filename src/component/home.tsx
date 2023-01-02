@@ -1,5 +1,9 @@
-//import Button from 'react-bootstrap/Button';
+
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Form from 'react-bootstrap/Form';
+import {  Navbar, Nav, Button } from 'react-bootstrap';
+import './home.css'
 const Home = () => {
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
@@ -40,7 +44,6 @@ const Home = () => {
 
     };
     
-// @ts-ignore
     let data = {modena:{title :title , text :text}}
     let filename = title +".json"
     const download = () =>{
@@ -58,20 +61,39 @@ const Home = () => {
     
     return (
         <>
-        <input type='file' onChange={onFileInputChange}/>
-        <input
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-        />
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar.Brand href="#home">
+                    <img
+                        width="30"
+                        height="30"
+                        alt="React Bootstrap logo"
+                    />
+                    SampleApp
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link href="#home">Home</Nav.Link>
+                        <Nav.Link href="#features">Features</Nav.Link>
+                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar >
         <div className="App">
-            <textarea name="" id=""
-        value={text}
-        onChange={(event) => setText(event.target.value)}></textarea>
-      
-      <h1>{title}</h1>
-      <p>{text}</p>
-      <button onClick={download}></button>
-    </div>
+
+        <Form.Control className="center-block " type='file' accept=".json" onChange={onFileInputChange}/>
+
+        <div className="center-block">
+            <Form.Control  className="title" value={title} onChange={(event) => setTitle(event.target.value)}/>
+        </div>
+        <div className="center-block">
+            <Form.Control as="textarea" rows={3} className="text" name="" id="" value={text} onChange={(event) => setText(event.target.value)}></Form.Control>
+        </div>
+        <div className="center-block">
+            <Button variant="primary" onClick={download}>Download</Button>
+        </div>
+        
+        </div>
         </>
     );
 };
