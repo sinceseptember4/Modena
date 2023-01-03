@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Modena/static/css/main.eb865911.css",
-    "main.js": "/Modena/static/js/main.275b66f0.js",
+    "main.js": "/Modena/static/js/main.39370833.js",
     "static/js/787.27b1940c.chunk.js": "/Modena/static/js/787.27b1940c.chunk.js",
     "index.html": "/Modena/index.html",
     "main.eb865911.css.map": "/Modena/static/css/main.eb865911.css.map",
-    "main.275b66f0.js.map": "/Modena/static/js/main.275b66f0.js.map",
+    "main.39370833.js.map": "/Modena/static/js/main.39370833.js.map",
     "787.27b1940c.chunk.js.map": "/Modena/static/js/787.27b1940c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eb865911.css",
-    "static/js/main.275b66f0.js"
+    "static/js/main.39370833.js"
   ]
 }
