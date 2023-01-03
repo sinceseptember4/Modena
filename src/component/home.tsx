@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Form from 'react-bootstrap/Form';
 import {  Navbar, Nav, Button } from 'react-bootstrap';
 import './home.css'
+import Logo from './images/logo.jpeg';
+import LogoName from './images/logo-name.jpeg';
 const Home = () => {
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
-
-
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let files :File | null= null;
         
@@ -43,12 +43,20 @@ const Home = () => {
 
 
     };
-    
-    let data = {modena:{title :title , text :text}}
-    let filename = title +".json"
+    const copyButton = () =>{ 
+        const btn = document.getElementById('button');
+        navigator.clipboard.writeText(text);
+        if (btn !== null) {
+            btn.innerHTML = 'OK!'; 
+            setTimeout(() => (btn.innerHTML = 'COPY!'), 1000); 
+        }
+    }
+
     const download = () =>{
+        let data = {modena:{title :title , text :text}}
+        let filename = title +".json"
         const string = JSON.stringify(data)
-        const blob = new Blob([string], {type: 'text/plain'});
+        const blob = new Blob([string], {type: 'application/json'});
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         document.body.appendChild(a);
@@ -61,14 +69,18 @@ const Home = () => {
     
     return (
         <>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="White" variant="White">
                 <Navbar.Brand href="#home">
                     <img
-                        width="30"
                         height="30"
-                        alt="React Bootstrap logo"
+                        alt="Modena logo"
+                        src={Logo}
                     />
-                    SampleApp
+                    <img
+                        height="15"
+                        alt="Modena logo"
+                        src={LogoName}
+                    />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -81,16 +93,19 @@ const Home = () => {
             </Navbar >
         <div className="App">
 
-        <Form.Control className="center-block " type='file' accept=".json" onChange={onFileInputChange}/>
+        <Form.Control className="center-block input" type='file' accept=".json" onChange={onFileInputChange}/>
 
         <div className="center-block">
-            <Form.Control  className="title" value={title} onChange={(event) => setTitle(event.target.value)}/>
+            <Form.Control  className="title" placeholder="title" value={title} onChange={(event) => setTitle(event.target.value)}/>
         </div>
+        <hr className="featurette-divider"></hr>
+        <Button variant="primary center-block" className="center-block" id="button" onClick={copyButton} >COPY!</Button>
         <div className="center-block">
-            <Form.Control as="textarea" rows={3} className="text" name="" id="" value={text} onChange={(event) => setText(event.target.value)}></Form.Control>
+            <Form.Control as="textarea" rows={6} className="text" placeholder="text" name="" id="" value={text} onChange={(event) => setText(event.target.value)}></Form.Control>
         </div>
+        <hr className="featurette-divider"></hr>
         <div className="center-block">
-            <Button variant="primary" onClick={download}>Download</Button>
+            <Button variant="primary center-block" onClick={download}>Download</Button>
         </div>
         
         </div>
