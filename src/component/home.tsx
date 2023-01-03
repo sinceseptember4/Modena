@@ -1,14 +1,17 @@
 
 import React, { useState } from "react";
+import Axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from 'react-bootstrap/Form';
 import {  Navbar, Nav, Button } from 'react-bootstrap';
 import './home.css'
 import Logo from './images/logo.jpeg';
 import LogoName from './images/logo-name.jpeg';
+
 const Home = () => {
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
+    const url = "https://american-joke.net/scuderia"
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let files :File | null= null;
         
@@ -51,6 +54,12 @@ const Home = () => {
             setTimeout(() => (btn.innerHTML = 'COPY!'), 1000); 
         }
     }
+    const upload = (title: string , text: string)  =>{
+        Axios.post(url, {
+            title :title ,
+            text :text
+        })
+    }
 
     const download = () =>{
         let data = {modena:{title :title , text :text}}
@@ -65,6 +74,7 @@ const Home = () => {
         a.click();
         a.remove();
         URL.revokeObjectURL(url);
+        upload(title, text)
     }
     
     return (
