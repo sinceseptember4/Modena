@@ -11,7 +11,7 @@ import LogoName from './images/logo-name.jpeg';
 const Home = () => {
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
-    const url = "https://american-joke.net/scuderia"
+    const url = "https://american-joke.net/sucuderia/"
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let files :File | null= null;
         
