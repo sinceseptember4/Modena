@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from 'react-bootstrap/Form';
@@ -11,7 +11,14 @@ import LogoName from './images/logo-name.jpeg';
 const Home = () => {
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
-    const url = "https://american-joke.net/sucuderia/"
+    const [count, setCount] = useState("");
+    const url = "https://american-joke.net/sucuderia/index.php"
+
+    useEffect(() => {
+        let textCount = text.replace(/\r?\n/g,"").length;
+        setCount(textCount + "文字");
+    },[text]) 
+
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let files :File | null= null;
         
@@ -56,9 +63,11 @@ const Home = () => {
     }
     const upload = (title: string , text: string)  =>{
         Axios.post(url, {
-            title :title ,
-            text :text
-        })
+            "title" :title ,
+            "text" :text
+        }).catch(err => {
+            console.log(err); 
+        });
     }
 
     const download = () =>{
@@ -112,6 +121,7 @@ const Home = () => {
         <Button variant="primary center-block" className="center-block" id="button" onClick={copyButton} >COPY!</Button>
         <div className="center-block">
             <Form.Control as="textarea" rows={6} className="text" placeholder="text" name="" id="" value={text} onChange={(event) => setText(event.target.value)}></Form.Control>
+            <p>{count}</p>
         </div>
         <hr className="featurette-divider"></hr>
         <div className="center-block">
