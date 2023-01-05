@@ -15,9 +15,27 @@ const Home = () => {
     const url = "https://american-joke.net/sucuderia/index.php"
 
     useEffect(() => {
+        const value1 = localStorage.getItem('title');
+        if (typeof value1 === 'string') {
+            setTitle(value1);
+        } 
+        const value2 = localStorage.getItem('text');
+        
+        if (typeof value2 === 'string') {
+            //localStorage.setItem('text', value2);
+            setText(value2);
+        } 
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]) 
+    useEffect(() => {
         let textCount = text.replace(/\r?\n/g,"").length;
         setCount(textCount + "文字");
+        localStorage.setItem('text', text);
     },[text]) 
+    useEffect(() => {
+        localStorage.setItem('title', title);
+    },[title]) 
 
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let files :File | null= null;
