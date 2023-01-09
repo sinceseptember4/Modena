@@ -28,6 +28,7 @@
     "eject": "react-scripts eject",
     "rm": "rm -rf docs",
     "mv": "mv build docs",
+    "postbuild": "cp build/index.html build/404.html",
     "git": "git add . && git commit && git push origin master",
     "deploy": "npm run build && gh-pages -d build"
   },

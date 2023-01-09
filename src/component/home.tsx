@@ -3,10 +3,8 @@ import React, { useState , useEffect } from "react";
 import Axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from 'react-bootstrap/Form';
-import {  Navbar, Nav, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './home.css'
-import Logo from './images/logo.jpeg';
-import LogoName from './images/logo-name.jpeg';
 
 const Home = () => {
     const [title, setTitle] = useState("");
@@ -106,47 +104,16 @@ const Home = () => {
     
     return (
         <>
-        <Navbar collapseOnSelect expand="lg" bg="White" variant="White">
-                <Navbar.Brand href="#home">
-                    <img
-                        height="30"
-                        alt="Modena logo"
-                        src={Logo}
-                    />
-                    <img
-                        height="15"
-                        alt="Modena logo"
-                        src={LogoName}
-                    />
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar >
-        <div className="App">
-
-        <Form.Control className="center-block input" type='file' accept=".json" onChange={onFileInputChange}/>
-
-        <div className="center-block">
-            <Form.Control  className="title" placeholder="title" value={title} onChange={(event) => setTitle(event.target.value)}/>
-        </div>
-        <hr className="featurette-divider"></hr>
-        <Button variant="primary center-block" className="center-block" id="button" onClick={copyButton} >COPY!</Button>
-        <div className="center-block">
-            <Form.Control as="textarea" rows={6} className="text" placeholder="text" name="" id="" value={text} onChange={(event) => setText(event.target.value)}></Form.Control>
-            <p>{count}</p>
-        </div>
-        <hr className="featurette-divider"></hr>
-        <div className="center-block">
-            <Button variant="primary center-block" onClick={download}>Download</Button>
-        </div>
-        
-        </div>
+            <div className="App">
+                <Form.Control className="center-block input" type='file' accept=".json" onChange={onFileInputChange}/>
+                <Form.Control  className="title" placeholder="title" value={title} onChange={(event) => setTitle(event.target.value)}/>
+                <hr className="featurette-divider"></hr>
+                <Button variant="primary center-block" className="center-block" id="button" onClick={copyButton} >COPY!</Button>
+                <Form.Control as="textarea" rows={6} className="text" placeholder="text" name="" id="" value={text} onChange={(event) => setText(event.target.value)}></Form.Control>
+                <p>{count}</p>
+                <hr className="featurette-divider"></hr>
+                <Button variant="primary center-block" onClick={download}>Download</Button>
+            </div>
         </>
     );
 };
