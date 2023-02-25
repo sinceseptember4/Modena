@@ -12,6 +12,7 @@ const Home = () => {
     const [count, setCount] = useState("");
     const url = "https://american-joke.net/sucuderia/index.php"
 
+    //起動時のlocalStorageから情報を取り出す処理。
     useEffect(() => {
         const value1 = localStorage.getItem('title');
         if (typeof value1 === 'string') {
@@ -20,30 +21,31 @@ const Home = () => {
         const value2 = localStorage.getItem('text');
         
         if (typeof value2 === 'string') {
-            //localStorage.setItem('text', value2);
+            
             setText(value2);
-        } 
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }
+        
     },[]) 
+    
+    //常時localStorageから情報を取り出す処理。
     useEffect(() => {
         let textCount = text.replace(/\r?\n/g,"").length;
         setCount(textCount + "文字");
         localStorage.setItem('text', text);
     },[text]) 
+
     useEffect(() => {
         localStorage.setItem('title', title);
     },[title]) 
 
+    //json ファイルを読み込むための処理
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let files :File | null= null;
         
         if (e.target.files !== null) {
             files = e.target.files[0];
             let reader = new FileReader();
-            
             reader.readAsText(files);
-            // @ts-ignore
             reader.onload = function() {
                 console.log(reader.result);
                 let jsonText :string= ""
@@ -66,9 +68,8 @@ const Home = () => {
         } else {
             alert("エラーが発生しました。");
         }
-
-
     };
+    //コピーボタンの処理
     const copyButton = () =>{ 
         const btn = document.getElementById('button');
         navigator.clipboard.writeText(text);
@@ -77,6 +78,7 @@ const Home = () => {
             setTimeout(() => (btn.innerHTML = 'COPY!'), 1000); 
         }
     }
+    //ファイルのアップロード
     const upload = (title: string , text: string)  =>{
         Axios.post(url, {
             "title" :title ,
@@ -85,7 +87,7 @@ const Home = () => {
             console.log(err); 
         });
     }
-
+    //downloadボタンの処理
     const download = () =>{
         let data = {modena:{title :title , text :text}}
         let filename = title +".json"

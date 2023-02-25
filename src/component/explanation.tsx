@@ -1,13 +1,27 @@
 
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Explanation = () => {
 
     return (
-        <>
-        <h1>explanation</h1>
-        </>
+        <Container fluid>
+        <Row>
+            <Col className="d-flex justify-content-center mt-5">
+                <h1>タイトル</h1>
+            </Col>
+        </Row>
+        <Row>
+            <Col className="d-flex justify-content-center">
+                <h1>タイトル</h1>
+            </Col>
+        </Row>
+        <Row>
+            <Col className="d-flex justify-content-center">
+                <h1>タイトル</h1>
+            </Col>
+        </Row>
+        </Container>
     );
 };
 
