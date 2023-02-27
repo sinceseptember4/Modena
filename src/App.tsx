@@ -25,7 +25,7 @@ function App() {
           <Nav.Link href="/Modena/credit">クレジット</Nav.Link>
         </Nav>
       </Navbar.Collapse>
-     
+    
     </Navbar >
   
       <BrowserRouter>
