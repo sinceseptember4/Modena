@@ -15,7 +15,7 @@ const Explanation = () => {
             </Col>
         </Row>
         <Row className="d-block mx-auto" style={{ width: '25rem' }}>
-            <Col className="d-flex justify-content-center ">
+            <Col className="d-flex justify-content-center align-items-center vh-100 ">
                 <Image className="mt-3 mb-5" src={TitleAndText} fluid />
             </Col>
         </Row>
