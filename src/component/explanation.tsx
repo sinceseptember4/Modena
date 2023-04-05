@@ -71,7 +71,7 @@ const Explanation = () => {
         </Row>
         <Row>
             <Col className="d-flex justify-content-center mt-5 mb-5">
-                <h1>🎉let's happy writing!!🎊</h1>
+                <h1>🎉let&apos;s happy writing!!🎊</h1>
             </Col>
         </Row>
         <footer>

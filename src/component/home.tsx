@@ -29,7 +29,7 @@ const Home = () => {
     
     //常時localStorageから情報を取り出す処理。
     useEffect(() => {
-        let textCount = text.replace(/\r?\n/g,"").length;
+        const textCount = text.replace(/\r?\n/g,"").length;
         setCount(textCount + "文字");
         localStorage.setItem('text', text);
     },[text]) 
@@ -44,11 +44,11 @@ const Home = () => {
         
         if (e.target.files !== null) {
             files = e.target.files[0];
-            let reader = new FileReader();
+            const reader = new FileReader();
             reader.readAsText(files);
             reader.onload = function() {
                 console.log(reader.result);
-                let jsonText :string= ""
+                let jsonText = ""
                 if (typeof reader.result === 'string') {
                     jsonText = reader.result;
                     const arr = JSON.parse(jsonText);
@@ -89,8 +89,8 @@ const Home = () => {
     }
     //downloadボタンの処理
     const download = () =>{
-        let data = {modena:{title :title , text :text}}
-        let filename = title +".json"
+        const data = {modena:{title :title , text :text}}
+        const filename = title +".json"
         const string = JSON.stringify(data)
         const blob = new Blob([string], {type: 'application/json'});
         const url = URL.createObjectURL(blob);
