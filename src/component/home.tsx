@@ -69,6 +69,13 @@ const Home = () => {
             alert("エラーが発生しました。");
         }
     };
+    const deleteAll = () => {
+        const res :boolean= confirm("全て削除してよろしいですが");
+        if( res === true ) {
+            setTitle("");
+            setText("");
+        }
+    }
     //コピーボタンの処理
     const copyButton = () =>{ 
         const btn = document.getElementById('button');
@@ -107,6 +114,7 @@ const Home = () => {
     return (
         <>
             <div className="App">
+                <Button variant="danger center-block" onClick={deleteAll}>Delete</Button>
                 <Form.Control className="center-block input" type='file' accept=".json" onChange={onFileInputChange}/>
                 <Form.Control  className="title" placeholder="title" value={title} onChange={(event) => setTitle(event.target.value)}/>
                 <hr className="featurette-divider"></hr>
