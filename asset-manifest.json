@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/Modena/static/css/main.6a817c6e.css",
-    "main.js": "/Modena/static/js/main.35cf058d.js",
+    "main.js": "/Modena/static/js/main.abb7c1f6.js",
     "static/js/787.27b1940c.chunk.js": "/Modena/static/js/787.27b1940c.chunk.js",
     "static/media/downloadExplanation.png": "/Modena/static/media/downloadExplanation.13af617785c976eadc06.png",
     "static/media/titleAndText.png": "/Modena/static/media/titleAndText.7dde6359c2a2f4df059b.png",
     "static/media/copyExplanation.png": "/Modena/static/media/copyExplanation.3ebecece2130e0ac638d.png",
     "index.html": "/Modena/index.html",
     "main.6a817c6e.css.map": "/Modena/static/css/main.6a817c6e.css.map",
-    "main.35cf058d.js.map": "/Modena/static/js/main.35cf058d.js.map",
+    "main.abb7c1f6.js.map": "/Modena/static/js/main.abb7c1f6.js.map",
     "787.27b1940c.chunk.js.map": "/Modena/static/js/787.27b1940c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6a817c6e.css",
-    "static/js/main.35cf058d.js"
+    "static/js/main.abb7c1f6.js"
   ]
 }
